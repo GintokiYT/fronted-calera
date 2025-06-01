@@ -1,11 +1,23 @@
-import axios from 'axios';
+import axios from "axios";
 
 const caleraAxios = axios.create({
-  baseURL: 'https://rickandmortyapi.com/api',
-  headers: {
-    'Content-Type': 'application/json',
-    // 'Authorization': 'Bearer token' // puedes agregar esto dinámicamente
+  baseURL: "http://localhost:3005",
+  // No definir headers por defecto para Content-Type
+});
+
+
+// Interceptor correcto sin error de tipo
+caleraAxios.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+
+  // Evita agregar token si es login
+  if (token && config.url && !config.url.includes("/api/usuario/login")) {
+    if (config.headers) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
   }
+
+  return config;
 });
 
 export default caleraAxios;

@@ -7,12 +7,27 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Eye, EyeOff } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useFetch } from "@/hooks/useFetch" 
 
 export default function Page() {
 
-  const [showPassword, setShowPassword] = useState(false);
-
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [correo, setCorreo] = useState("");
+  const [contrasena, setContrasena] = useState("");
+  const { postLogin } = useFetch();
+
+ const handleLogin = async () => {
+    try {
+      await postLogin(correo, contrasena); 
+     
+      navigate("/dashboard/usuarios");
+    } catch (error) {
+      alert("Credenciales inválidas o error de red");
+    }
+  };
+
+
 
   return (
     <div className="w-full min-h-dvh flex items-center justify-center p-4 relative">
@@ -25,12 +40,12 @@ export default function Page() {
         <CardContent className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="username">Email</Label>
-            <Input id="username" type="text" placeholder="usuario@ejemplo.com" required />
+            <Input id="username" type="text" placeholder="usuario@ejemplo.com" required  value={correo} onChange={(e) => setCorreo(e.target.value)}/>
           </div>
           <div className="space-y-2">
             <Label htmlFor="password">Contraseña</Label>
             <div className="relative">
-              <Input id="password" type={showPassword ? "text" : "password"} placeholder="••••••••" required />
+              <Input id="password" type={showPassword ? "text" : "password"} placeholder="••••••••" required value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
               <Button
                 type="button"
                 variant="ghost"
@@ -57,7 +72,7 @@ export default function Page() {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col space-y-4">
-          <Button type="submit" className="w-full" onClick={() => navigate("/dashboard/usuarios")}>
+          <Button type="submit" className="w-full" onClick={handleLogin}>
             Iniciar Sesión
           </Button>
         </CardFooter>
