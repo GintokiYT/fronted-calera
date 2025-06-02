@@ -17,6 +17,8 @@ export function useFetch() {
     }
   };
 
+  
+
    const getCatalogoEmpleado = async () => {
     try {
       const response = await caleraAxios.get("/api/empleados/catalogos");

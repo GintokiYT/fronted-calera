@@ -26,9 +26,7 @@ export default function Page() {
       alert("Credenciales inválidas o error de red");
     }
   };
-
-
-
+ 
   return (
     <div className="w-full min-h-dvh flex items-center justify-center p-4 relative">
       <img className="absolute -z-10 w-full h-full object-fill" src="/assets/img/fondo.webp" alt="fondo" />
