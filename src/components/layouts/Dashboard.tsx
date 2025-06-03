@@ -25,6 +25,7 @@ const items = [
 export default function Dashboard() {
 
   const { isMobile, setOpenMobile } = useSidebar();
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
 
   const handleLinkClick = () => {
     if (isMobile) {
@@ -38,11 +39,11 @@ export default function Dashboard() {
         <div className="flex items-center gap-3 px-2 py-4">
           <Avatar className="h-8 w-8">
             <AvatarImage src="/placeholder.svg?height=32&width=32" alt="Usuario" />
-            <AvatarFallback>JD</AvatarFallback>
+            <AvatarFallback> {(user?.nombre?.[0] || '') + (user?.apellido?.[0] || '')}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col">
-            <span className="text-sm font-medium">Juan Pérez</span>
-            <span className="text-xs text-muted-foreground">juan@ejemplo.com</span>
+            <span className="text-sm font-medium">{user.nombre} {user.apellido}</span>
+            <span className="text-xs text-muted-foreground">{user.correo}</span>
           </div>
         </div>
       </SidebarHeader>
