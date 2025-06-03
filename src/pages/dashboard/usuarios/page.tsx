@@ -113,7 +113,7 @@ export default function Page() {
           <CardTitle>Registro de Usuario</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
+          <div className="space-y-2">
             <Label>Tipo de Documento</Label>
             <Select onValueChange={value => handleChange("tipo_documento_id", value)}>
               <SelectTrigger>
@@ -127,7 +127,7 @@ export default function Page() {
             </Select>
             </div> 
 
-          <div>
+          <div className="space-y-2">
             <Label>Número de Documento</Label>
             <Input
               value={formData.numero_documento}
@@ -135,7 +135,7 @@ export default function Page() {
             />
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label>Nombre</Label>
             <Input
               value={formData.nombre}
@@ -143,7 +143,7 @@ export default function Page() {
             />
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label>Apellido</Label>
             <Input
               value={formData.apellido}
@@ -151,7 +151,7 @@ export default function Page() {
             />
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label>Sede</Label>
             <Select onValueChange={value => handleChange("sede_id", value)}>
               <SelectTrigger>
@@ -165,7 +165,7 @@ export default function Page() {
             </Select>
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label>Gerencia</Label>
             <Select onValueChange={value => handleChange("gerencia_id", value)}>
               <SelectTrigger>
@@ -179,7 +179,7 @@ export default function Page() {
             </Select>
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label>Área</Label>
             <Select onValueChange={value => handleChange("area_id", value)}>
               <SelectTrigger>
@@ -193,7 +193,7 @@ export default function Page() {
             </Select>
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label>Cargo</Label>
             <Select onValueChange={value => handleChange("cargo_id", value)}>
               <SelectTrigger>
@@ -207,7 +207,7 @@ export default function Page() {
             </Select>
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label>Teléfono</Label>
             <Input
               value={formData.telefono}
@@ -215,7 +215,7 @@ export default function Page() {
             />
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label>Usuario AD</Label>
             <Input
               value={formData.usuario_ad}
@@ -223,7 +223,7 @@ export default function Page() {
             />
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label>Correo Corporativo</Label>
             <Input
               value={formData.correo}
@@ -231,7 +231,7 @@ export default function Page() {
             />
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label>Fecha de Ingreso</Label>
             <Input
               type="date"
@@ -240,7 +240,7 @@ export default function Page() {
             />
           </div>
 
-          <div>
+          <div className="space-y-2">
             <Label>Estado</Label>
             <Select onValueChange={value => handleChange("estado_id", value)}>
               <SelectTrigger>
