@@ -40,7 +40,7 @@ export default function EquipoForm() {
       creador_id: JSON.parse(localStorage.getItem("user") || "{}").creador_id || "",
       pertenece_id: idPertenece,
       direccion_ip: formData.ip || "",
-      estado_impresora_id: formData.estado_equipo_id || "",
+      estado_equipo_id: formData.estado_equipo_id || "",
       observaciones: formData.comentario || "",
     }).finally(() => {
       setCodigoActivo(generarCodigoActivo());
