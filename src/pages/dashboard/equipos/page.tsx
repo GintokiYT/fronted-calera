@@ -28,8 +28,7 @@ export default function EquipoForm() {
 
   const [ loadingRegister, setLoadingRegister ] = useState(false);
 
-  const handleRegistrar =  async () => {
-    console.log("Registrar clickeado");
+  const handleRegistrar =  async () => { 
     let idPertenece: any = catalogo.pertenece.find((item: any) => item.label === formData.pertenece)!;  
     idPertenece = idPertenece?.value ?? "";  
 
@@ -45,8 +44,32 @@ export default function EquipoForm() {
     }).finally(() => {
       setCodigoActivo(generarCodigoActivo());
       setLoadingRegister(false);
+      limpiarFormulario(); 
     })
   };
+
+  const limpiarFormulario = () => {
+    setFormData({
+      tipoDispositivo: "",
+      serie: "",
+      pertenece: "",
+      comentario: "",
+      fecha_instalacion: "",
+      ip: "",
+      marca_id: "",
+      modelo_id: "",
+      procesador_id: "",
+      memoria_id: "",
+      almacenamiento_id: "",
+      empresa_alquiler_id: "",
+      lote_id: "",
+      sede_id: "",
+      area_id: "",
+      tipo_impresora_id: "",
+      estado_equipo_id: "",
+      codigo_activo: ""
+    });
+  }
 
   const handleModificar = () => {
     console.log("Modificar clickeado");
@@ -320,6 +343,14 @@ export default function EquipoForm() {
 
   const renderImpresoraFields = () => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+     <div>
+      <Label>Número de Serie</Label>
+      <Input
+        value={formData.serie}
+        placeholder="Ingrese el número de serie"
+        onChange={(e) => handleChange("serie", e.target.value)}
+      />
+    </div>
       <div>
         <Label>Sede</Label>
         <Select onValueChange={(val) => handleChange("sede_id", val)}>
